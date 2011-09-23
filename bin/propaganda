@@ -1,0 +1,40 @@
+#!/usr/bin/env node
+var fs      = require('fs'),
+    path    = require('path'),
+    lib     = path.join(path.dirname(fs.realpathSync(__filename)), '../lib'),
+    tmpls   = path.join(path.dirname(fs.realpathSync(__filename)), '../templates'),
+    prop    = require(lib + '/propaganda.js'),
+    usage   = 'usage: propaganda <markdownfile>',
+    argv    = require('optimist')
+              .alias('h', 'header')
+              .alias('f', 'footer')
+              .alias('b', 'blk')
+              .argv;
+
+if (argv.help) {
+  console.log(usage);
+  process.kill();
+}
+
+var options = {
+  file: argv._[0] || 'README',
+  stylesheet: tmpls + '/style.less',
+  template: tmpls + '/template.html'
+};
+
+if (argv.header) {
+  options['headerSel'] = (argv.header == true) ? "h1:first" : argv.header;
+}
+if (argv.footer) {
+  options.footerSel = (argv.footer == true) ? "h2:last" : argv.footer;
+}
+
+if (argv.header && argv.blk) {
+  options.blocks = argv.blk;
+}
+
+if (path.existsSync(options.file)) {
+  prop(options, function () {});
+} else {
+  console.log("File not found. " + usage);
+}

@@ -1,0 +1,26 @@
+{
+  "name":         "propaganda",
+  "description":  "Generate a beautiful website for your open-source project from amarkdown file.",
+  "keywords":     ["generator", "readme", "website", "coffeescript"],
+  "author":       "Ben Mills",
+  "version":      "0.0.1",
+  "licenses": [{
+    "type":       "MIT",
+    "url":        "http://opensource.org/licenses/mit-license.php"
+  }],
+  "engines": {
+    "node":       ">=0.4.0"
+  },
+  "dependencies": {
+    "ejs": ">= 0.4.3",
+    "jquery": ">= 1.6.3",
+    "optimist": ">= 0.2.6",
+    "robotskirt": ">= 0.2.2",
+    "less": ">= 1.1.4"
+  },
+  "devDependencies": { 
+    "coffee-script": ">= 1.1.1"
+  },
+  "main": "./lib/propaganda.js",
+  "bin": { "propaganda": "./bin/propaganda" }
+}
