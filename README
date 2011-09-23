@@ -1,0 +1,24 @@
+Propaganda
+=============================
+
+A well designed project page is a great way to get your open source project publicity. Some examples are [Pow](http://pow.cx/), [Backbone.js](http://documentcloud.github.com/backbone/) and [Vows](http://vowsjs.org/). Propaganda's goal is to make generating these sites easily from a README file written in markdown.
+
+Get it
+-----------------------------
+
+You can install propaganda using [npm](http://npmjs.org/)
+
+```bash
+npm install propaganda
+```
+
+Use it
+----------------------------
+
+The basic usage is as easy as it gets.
+
+```bash
+propaganda README
+```
+
+This will output an `index.html` file in the directory you're currently in. This file should have all the CSS enbeded in the HTML, so all you need to deploy is that file.
