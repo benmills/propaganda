@@ -1,77 +1,441 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset='utf-8'>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="http://fonts.googleapis.com/css?family=Lekton" rel="stylesheet" type="text/css">
+    <style type="text/css">body {
+  background: #dddddd;
+  color: #565656;
+  font-family: Lucida Grande, Helvetica;
+  margin: 0;
+}
+.center {
+  width: 800px;
+  margin-right: auto;
+  margin-left: auto;
+}
+#main {
+  margin: 30px auto;
+}
+pre, code {
+  font-family: Monaco;
+  font-size: 12px;
+  overflow-x: scroll;
+}
+p code {
+  background: #efefef;
+}
+pre {
+  background: #efefef;
+  padding: 10px;
+  margin: 20px 0;
+  color: #476167;
+}
+p {
+  line-height: 23px;
+}
+h2 {
+  margin: 50px 0 0 0;
+  padding: 0 0 10px 0;
+  border-bottom: 3px solid #e5e5e5;
+  color: #2a2a2a;
+  font-weight: normal;
+}
+h1 {
+  font-size: 60px;
+  letter-spacing: -1px;
+  font-weight: normal;
+}
+a {
+  color: #2874db;
+}
+ul {
+  list-style: square;
+  padding: 0 0 0 20px;
+}
+footer {
+  background: #212426;
+  color: #FFF;
+  font-size: 10px;
+  padding: 10px 0;
+  color: #94a6af;
+}
+footer h2 {
+  border: none;
+  color: #FFF;
+  margin: 20px 0 0 0;
+}
+footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+footer p {
+  margin: 0;
+}
+footer a {
+  color: #94a6af;
+}
+footer p, footer h2, footer ul {
+  width: 800px;
+  margin-right: auto;
+  margin-left: auto;
+}
+header {
+  padding: 20px 0 20px 10px;
+  color: #516a76;
+  background: #e4e7e9;
+  border-bottom: 6px solid #ebebeb;
+}
+header h1 {
+  display: inline;
+  color: #14262f;
+  font-family: 'Lekton', sans-serif;
+}
+header div.center div {
+  float: right;
+  background: #FFF;
+  margin: 12px 10px 0 0;
+  padding: 10px;
+  display: inline;
+  border-radius: 5px;
+}
+header div.center div code, header div.center div pre {
+  font-size: 14px;
+}
+header a {
+  text-decoration: none;
+}
+body .hll {
+  background-color: #ffffcc;
+}
+body .c {
+  color: #408080;
+  font-style: italic;
+}
+/* Comment */
+body .err {
+  border: 1px solid #ff0000;
+}
+/* Error */
+body .k {
+  color: #954121;
+}
+/* Keyword */
+body .o {
+  color: #666666;
+}
+/* Operator */
+body .cm {
+  color: #408080;
+  font-style: italic;
+}
+/* Comment.Multiline */
+body .cp {
+  color: #bc7a00;
+}
+/* Comment.Preproc */
+body .c1 {
+  color: #408080;
+  font-style: italic;
+}
+/* Comment.Single */
+body .cs {
+  color: #408080;
+  font-style: italic;
+}
+/* Comment.Special */
+body .gd {
+  color: #a00000;
+}
+/* Generic.Deleted */
+body .ge {
+  font-style: italic;
+}
+/* Generic.Emph */
+body .gr {
+  color: #ff0000;
+}
+/* Generic.Error */
+body .gh {
+  color: #000080;
+  font-weight: bold;
+}
+/* Generic.Heading */
+body .gi {
+  color: #00a000;
+}
+/* Generic.Inserted */
+body .go {
+  color: #808080;
+}
+/* Generic.Output */
+body .gp {
+  color: #000080;
+  font-weight: bold;
+}
+/* Generic.Prompt */
+body .gs {
+  font-weight: bold;
+}
+/* Generic.Strong */
+body .gu {
+  color: #800080;
+  font-weight: bold;
+}
+/* Generic.Subheading */
+body .gt {
+  color: #0040d0;
+}
+/* Generic.Traceback */
+body .kc {
+  color: #954121;
+}
+/* Keyword.Constant */
+body .kd {
+  color: #954121;
+  font-weight: bold;
+}
+/* Keyword.Declaration */
+body .kn {
+  color: #954121;
+  font-weight: bold;
+}
+/* Keyword.Namespace */
+body .kp {
+  color: #954121;
+}
+/* Keyword.Pseudo */
+body .kr {
+  color: #954121;
+  font-weight: bold;
+}
+/* Keyword.Reserved */
+body .kt {
+  color: #b00040;
+}
+/* Keyword.Type */
+body .m {
+  color: #666666;
+}
+/* Literal.Number */
+body .s {
+  color: #219161;
+}
+/* Literal.String */
+body .na {
+  color: #7d9029;
+}
+/* Name.Attribute */
+body .nb {
+  color: #954121;
+}
+/* Name.Builtin */
+body .nc {
+  color: #0000FF;
+  font-weight: bold;
+}
+/* Name.Class */
+body .no {
+  color: #880000;
+}
+/* Name.Constant */
+body .nd {
+  color: #aa22ff;
+}
+/* Name.Decorator */
+body .ni {
+  color: #999999;
+  font-weight: bold;
+}
+/* Name.Entity */
+body .ne {
+  color: #D2413A;
+  font-weight: bold;
+}
+/* Name.Exception */
+body .nf {
+  color: #0000ff;
+}
+/* Name.Function */
+body .nl {
+  color: #a0a000;
+}
+/* Name.Label */
+body .nn {
+  color: #0000FF;
+  font-weight: bold;
+}
+/* Name.Namespace */
+body .nt {
+  color: #954121;
+  font-weight: bold;
+}
+/* Name.Tag */
+body .nv {
+  color: #19469d;
+}
+/* Name.Variable */
+body .ow {
+  color: #AA22FF;
+  font-weight: bold;
+}
+/* Operator.Word */
+body .w {
+  color: #bbbbbb;
+}
+/* Text.Whitespace */
+body .mf {
+  color: #666666;
+}
+/* Literal.Number.Float */
+body .mh {
+  color: #666666;
+}
+/* Literal.Number.Hex */
+body .mi {
+  color: #666666;
+}
+/* Literal.Number.Integer */
+body .mo {
+  color: #666666;
+}
+/* Literal.Number.Oct */
+body .sb {
+  color: #219161;
+}
+/* Literal.String.Backtick */
+body .sc {
+  color: #219161;
+}
+/* Literal.String.Char */
+body .sd {
+  color: #219161;
+  font-style: italic;
+}
+/* Literal.String.Doc */
+body .s2 {
+  color: #219161;
+}
+/* Literal.String.Double */
+body .se {
+  color: #BB6622;
+  font-weight: bold;
+}
+/* Literal.String.Escape */
+body .sh {
+  color: #219161;
+}
+/* Literal.String.Heredoc */
+body .si {
+  color: #BB6688;
+  font-weight: bold;
+}
+/* Literal.String.Interpol */
+body .sx {
+  color: #954121;
+}
+/* Literal.String.Other */
+body .sr {
+  color: #bb6688;
+}
+/* Literal.String.Regex */
+body .s1 {
+  color: #219161;
+}
+/* Literal.String.Single */
+body .ss {
+  color: #19469d;
+}
+/* Literal.String.Symbol */
+body .bp {
+  color: #954121;
+}
+/* Name.Builtin.Pseudo */
+body .vc {
+  color: #19469d;
+}
+/* Name.Variable.Class */
+body .vg {
+  color: #19469d;
+}
+/* Name.Variable.Global */
+body .vi {
+  color: #19469d;
+}
+/* Name.Variable.Instance */
+body .il {
+  color: #666666;
+}
+/* Literal.Number.Integer.Long */
+</style>
+  </head>
 
-  <title>benmills/propaganda @ GitHub</title>
+  <body>
+    <header><div class="center"><div><a href="http://github.com/benmills/propaganda">Fork me on Github</a></div><h1>Propaganda</h1></div></header><div class="center" id="main">
+      
 
-  <style type="text/css">
-    body {
-      margin-top: 1.0em;
-      background-color: #4176d9;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #000000;
-    }
-    #container {
-      margin: 0 auto;
-      width: 700px;
-    }
-    h1 { font-size: 3.8em; color: #be8926; margin-bottom: 3px; }
-    h1 .small { font-size: 0.4em; }
-    h1 a { text-decoration: none }
-    h2 { font-size: 1.5em; color: #be8926; }
-    h3 { text-align: center; color: #be8926; }
-    a { color: #be8926; }
-    .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
-    .download { float: right; }
-    pre { background: #000; color: #fff; padding: 15px;}
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .footer { text-align:center; padding-top:30px; font-style: italic; }
-  </style>
-</head>
+<p>A well designed project page is a powerful way to get your open source project publicity. Some examples are <a href="http://pow.cx/">Pow</a>, <a href="http://documentcloud.github.com/backbone/">Backbone.js</a> and <a href="http://vowsjs.org/">Vows</a>. Propaganda's goal is to make generating these sites easily from a README file written in markdown.</p>
 
-<body>
-  <a href="http://github.com/benmills/propaganda"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+<h2>Get it</h2>
 
-  <div id="container">
+<p>You can install propaganda using <a href="http://npmjs.org/">npm</a></p>
 
-    <div class="download">
-      <a href="http://github.com/benmills/propaganda/zipball/master">
-        <img border="0" width="90" src="http://github.com/images/modules/download/zip.png"></a>
-      <a href="http://github.com/benmills/propaganda/tarball/master">
-        <img border="0" width="90" src="http://github.com/images/modules/download/tar.png"></a>
+<div class="highlight"><pre>npm install propaganda
+</pre></div>
+
+
+<p>After propaganda is installed vist the <a href="http://pygments.org/">Pygments</a> homepage to install <code>pygmentize</code>.</p>
+
+<h2>Use it</h2>
+
+<p>The basic usage is as easy as it gets.</p>
+
+<div class="highlight"><pre>propaganda README
+</pre></div>
+
+
+<p>This will output an <code>index.html</code> file. This file should have all the CSS embedded in the HTML, so all you need to deploy is that file.</p>
+
+<p><code>index.html</code> should look something like this:</p>
+
+<p><img src="https://github.com/benmills/propaganda/raw/master/images/simple.png"></p>
+
+<p>While that does look nice we can use propaganda to make it look better. Let's add a header to our page using the <code>--header</code> flag. (Note: <code>-h</code> is an alias for <code>--header</code>)</p>
+
+<div class="highlight"><pre>propaganda README --header
+</pre></div>
+
+
+<p><img src="https://github.com/benmills/propaganda/raw/master/images/header.png"></p>
+
+<p>Pretty good, but we can do better. Let's add the first paragraph to our header as well and add a link to the project's github page. We can adjust what content is inside the header by passing a jQuery selector to the <code>--header</code> option. By default, the header option's selector is <code>h1:first</code>. To add a link to our github page we can add a "block". You can add as many blocks as you want by adding a <code>--blk</code> option to the command (Note: just like <code>-h</code> is aliased to <code>--header</code>, <code>-b</code> is aliased to <code>--blk</code>)</p>
+
+<div class="highlight"><pre>propaganda README --header <span class="s2">"h1:first, p:first"</span> <span class="se">\</span>
+                  --blk <span class="s2">"&lt;a href='http://github.com/benmills/robotskirt'&gt;Code on Github&lt;/a&gt;"</span>
+</pre></div>
+
+
+<p><img src="https://github.com/benmills/propaganda/raw/master/images/header-complex.png"></p>
+
+<p>Great! Now lets add a footer. We can use the <code>--footer</code> option to add a footer to our page (or, you guessed it, <code>-f</code>). Like the <code>--header</code> command we can pass a jQuery selector to the <code>--footer</code> option, but for the footer option the selector defines the first element of the footer, all elements after it will be added to the footer.</p>
+
+<p>The footer option defaults to the last <code>h2</code>.</p>
+
+<div class="highlight"><pre>propaganda README --footer
+</pre></div>
+
+
+<p><img src="https://github.com/benmills/propaganda/raw/master/images/footer.png"></p>
+
+<p>We can add a jQuery selector to match the second to last <code>h2</code> to add a little bit more content to the footer.</p>
+
+<div class="highlight"><pre>propaganda README --footer <span class="s2">"h2:eq(2)"</span>
+</pre></div>
+
+
+<p><img src="https://github.com/benmills/propaganda/raw/master/images/footer-complex.png"></p>
+
     </div>
-
-    <h1><a href="http://github.com/benmills/propaganda">propaganda</a>
-      <span class="small">by <a href="http://github.com/benmills">benmills</a></span></h1>
-
-    <div class="description">
-      A command-line utility to generate open-source project pages from a markdown readme.
-    </div>
-
-    <h2>Authors</h2>
-<p>benmills (bmills@benmillsdesigns.com)<br/><br/>      </p>
-<h2>Contact</h2>
-<p>Ben Mills (bmills@benmillsdesigns.com)<br/>      </p>
-
-
-    <h2>Download</h2>
-    <p>
-      You can download this project in either
-      <a href="http://github.com/benmills/propaganda/zipball/master">zip</a> or
-      <a href="http://github.com/benmills/propaganda/tarball/master">tar</a> formats.
-    </p>
-    <p>You can also clone the project with <a href="http://git-scm.com">Git</a>
-      by running:
-      <pre>$ git clone git://github.com/benmills/propaganda</pre>
-    </p>
-
-    <div class="footer">
-      get the source code on GitHub : <a href="http://github.com/benmills/propaganda">benmills/propaganda</a>
-    </div>
-
-  </div>
-
-  
-</body>
+  </body>
 </html>
