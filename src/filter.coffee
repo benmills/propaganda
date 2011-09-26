@@ -44,7 +44,7 @@ class Filter
 
     startIndex = $(sel).index()
     $elements = $('div#main').children()
-    length = $elements.length
+    length = $elements.length - 1
     footer = ''
 
     for i in [startIndex..length]
