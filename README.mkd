@@ -27,7 +27,7 @@ This will output an `index.html` file. This file should have all the CSS embedde
 
 `index.html` should look something like this:
 
-![Simple](images/simple.png)
+<img src="https://github.com/benmills/propaganda/raw/master/images/simple.png">
 
 While that does look nice we can use propaganda to make it look better. Let's add a header to our page using the `--header` flag. (Note: `-h` is an alias for `--header`)
 
@@ -35,7 +35,7 @@ While that does look nice we can use propaganda to make it look better. Let's ad
 propaganda README --header
 ```
 
-![Header](images/header.png)
+<img src="https://github.com/benmills/propaganda/raw/master/images/header.png">
 
 Pretty good, but we can do better. Let's add the first paragraph to our header as well and add a link to the project's github page. We can adjust what content is inside the header by passing a jQuery selector to the `--header` option. By default, the header option's selector is `h1:first`. To add a link to our github page we can add a "block". You can add as many blocks as you want by adding a `--blk` option to the command (Note: just like `-h` is aliased to `--header`, `-b` is aliased to `--blk`)
 
@@ -45,7 +45,7 @@ propaganda README --header "h1:first, p:first" \
                   --blk "<a href='http://github.com/benmills/robotskirt'>Code on Github</a>"
 ```
 
-![Header-Complex](images/header-complex.png)
+<img src="https://github.com/benmills/propaganda/raw/master/images/header-complex.png">
 
 Great! Now lets add a footer. We can use the `--footer` option to add a footer to our page (or, you guessed it, `-f`). Like the `--header` command we can pass a jQuery selector to the `--footer` option, but for the footer option the selector defines the first element of the footer, all elements after it will be added to the footer.
 
@@ -55,7 +55,7 @@ The footer option defaults to the last `h2`.
 propaganda README --footer
 ```
 
-![Footer](images/footer.png)
+<img src="https://github.com/benmills/propaganda/raw/master/images/footer.png">
 
 We can add a jQuery selector to match the second to last `h2` to add a little bit more content to the footer.
 
@@ -63,4 +63,4 @@ We can add a jQuery selector to match the second to last `h2` to add a little bi
 propaganda README --footer "h2:eq(2)"
 ```
 
-![Footer-Complex](images/footer-complex.png)
+<img src="https://github.com/benmills/propaganda/raw/master/images/footer-complex.png">
