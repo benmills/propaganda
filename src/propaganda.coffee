@@ -5,7 +5,7 @@ p         = console.log
 
 class Propaganda
   constructor: (@options, @parsedCallback) ->
-    @output        = fs.readFileSync(@options.file).toString()
+    @output        = @options.fileContents || fs.readFileSync(@options.file).toString()
     @stylesheet    = fs.readFileSync(@options.stylesheet).toString()
     @template      = fs.readFileSync(@options.template).toString()
     @pygmentizeCmd = @options.pygmentizeCmd || 'pygmentize'
