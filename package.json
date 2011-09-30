@@ -3,7 +3,7 @@
   "description":  "Generate a beautiful website for your open-source project from amarkdown file.",
   "keywords":     ["generator", "readme", "website", "coffeescript"],
   "author":       "Ben Mills",
-  "version":      "0.0.3",
+  "version":      "0.0.4",
   "licenses": [{
     "type":       "MIT",
     "url":        "http://opensource.org/licenses/mit-license.php"
