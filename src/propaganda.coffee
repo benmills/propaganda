@@ -40,5 +40,4 @@ class Propaganda
           @applyFilters(filters, callback)
         
 module.exports = (options, callback) ->
-  new Propaganda options, (err, output) ->
-    fs.writeFileSync 'index.html', output
+  new Propaganda options, callback
