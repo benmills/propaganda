@@ -3,6 +3,8 @@ Propaganda
 
 A well designed project page is a powerful way to get your open source project publicity. Some examples are [Pow](http://pow.cx/), [Backbone.js](http://documentcloud.github.com/backbone/) and [Vows](http://vowsjs.org/). Propaganda's goal is to make generating these sites easily from a README file written in markdown.
 
+*Try it out [online](http://trypropaganda.herokuapp.com).*
+
 Get it
 -----------------------------
 
