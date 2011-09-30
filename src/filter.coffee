@@ -1,5 +1,6 @@
-ejs             = require 'ejs'
 $               = require 'jquery'
+ejs             = require 'ejs'
+markdown        = require 'robotskirt'
 pygmentize      = require './pygmentize'
 {EventEmitter}  = require 'events'
 
@@ -56,16 +57,25 @@ class Filter
     else
       output
 
+  @markdown: (output) ->
+    waiting = new EventEmitter()
+    markdown.toHtml output, (html) ->
+      waiting.emit Filter.DONE, html.toString()
+    waiting
+
   @highlight: (output) ->
+    waiting = new EventEmitter()
     $('body').html('')
     $(output).appendTo('body')
     $code = $("code")
     toColor = $code.length
     errors = ''
-    waiting = new EventEmitter()
+    doneHighlighting = false
+    cmd = @pygmentizeCmd
 
     finishHighlight = ->
       if toColor == 1
+        doneHighlighting = true
         waiting.emit Filter.DONE, $('body').html()
       else
         toColor--
@@ -77,14 +87,21 @@ class Filter
         lang = $item.attr('class')
         if lang.length > 0
           unescapedHtml = $("<div/>").html($item.html()).text()
-          pygmentize unescapedHtml, $item.attr('class'), (colorizeErrors, highlightedCode) ->
-            errors += colorizeErrors
-            $item.parent("pre").replaceWith(highlightedCode)
-            finishHighlight()
+          pygmentize(
+            cmd, unescapedHtml, $item.attr('class'),
+            (colorizeErrors, highlightedCode) ->
+              if highlightedCode
+                errors += colorizeErrors
+                $item.parent("pre").replaceWith(highlightedCode)
+              finishHighlight()
+          )
         else
           finishHighlight()
 
-    waiting
+    if doneHighlighting
+      $('body').html()
+    else
+      waiting
 
 
 module.exports.Filter = Filter

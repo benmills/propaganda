@@ -1,3 +1,4 @@
+
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -40,6 +41,13 @@ h2 {
   border-bottom: 3px solid #e5e5e5;
   color: #2a2a2a;
   font-weight: normal;
+}
+h3 {
+  font-weight: normal;
+}
+hr {
+  border: 0;
+  border-bottom: 3px solid #e5e5e5;
 }
 h1 {
   font-size: 60px;
@@ -372,18 +380,17 @@ body .il {
   </head>
 
   <body>
-    <header><div class="center"><div><a href="http://github.com/benmills/robotskirt">Code on Github</a></div><h1>Propaganda</h1><p>A well designed project page is a powerful way to get your open source project publicity. Some examples are <a href="http://pow.cx/">Pow</a>, <a href="http://documentcloud.github.com/backbone/">Backbone.js</a> and <a href="http://vowsjs.org/">Vows</a>. Propaganda's goal is to make generating these sites easily from a README file written in markdown.</p></div></header><div class="center" id="main">
-      
+    <div class="center" id="main">
+      <h1>Propaganda</h1>
 
-
+<p>A well designed project page is a powerful way to get your open source project publicity. Some examples are <a href="http://pow.cx/">Pow</a>, <a href="http://documentcloud.github.com/backbone/">Backbone.js</a> and <a href="http://vowsjs.org/">Vows</a>. Propaganda's goal is to make generating these sites easily from a README file written in markdown.</p>
 
 <h2>Get it</h2>
 
 <p>You can install propaganda using <a href="http://npmjs.org/">npm</a></p>
 
-<div class="highlight"><pre>npm install propaganda
-</pre></div>
-
+<pre><code class="bash">npm install propaganda
+</code></pre>
 
 <p>After propaganda is installed vist the <a href="http://pygments.org/">Pygments</a> homepage to install <code>pygmentize</code>.</p>
 
@@ -391,9 +398,8 @@ body .il {
 
 <p>The basic usage is as easy as it gets.</p>
 
-<div class="highlight"><pre>propaganda README
-</pre></div>
-
+<pre><code class="bash">propaganda README
+</code></pre>
 
 <p>This will output an <code>index.html</code> file. This file should have all the CSS embedded in the HTML, so all you need to deploy is that file.</p>
 
@@ -403,18 +409,16 @@ body .il {
 
 <p>While that does look nice we can use propaganda to make it look better. Let's add a header to our page using the <code>--header</code> flag. (Note: <code>-h</code> is an alias for <code>--header</code>)</p>
 
-<div class="highlight"><pre>propaganda README --header
-</pre></div>
-
+<pre><code class="bash">propaganda README --header
+</code></pre>
 
 <p><img src="https://github.com/benmills/propaganda/raw/master/images/header.png"></p>
 
 <p>Pretty good, but we can do better. Let's add the first paragraph to our header as well and add a link to the project's github page. We can adjust what content is inside the header by passing a jQuery selector to the <code>--header</code> option. By default, the header option's selector is <code>h1:first</code>. To add a link to our github page we can add a &quot;block&quot;. You can add as many blocks as you want by adding a <code>--blk</code> option to the command (Note: just like <code>-h</code> is aliased to <code>--header</code>, <code>-b</code> is aliased to <code>--blk</code>)</p>
 
-<div class="highlight"><pre>propaganda README --header <span class="s2">&quot;h1:first, p:first&quot;</span> <span class="se">\</span>
-                  --blk <span class="s2">&quot;&lt;a href='http://github.com/benmills/robotskirt'&gt;Code on Github&lt;/a&gt;&quot;</span>
-</pre></div>
-
+<pre><code class="bash">propaganda README --header &quot;h1:first, p:first&quot; \
+                  --blk &quot;&lt;a href='http://github.com/benmills/robotskirt'&gt;Code on Github&lt;/a&gt;&quot;
+</code></pre>
 
 <p><img src="https://github.com/benmills/propaganda/raw/master/images/header-complex.png"></p>
 
@@ -422,17 +426,15 @@ body .il {
 
 <p>The footer option defaults to the last <code>h2</code>.</p>
 
-<div class="highlight"><pre>propaganda README --footer
-</pre></div>
-
+<pre><code class="bash">propaganda README --footer
+</code></pre>
 
 <p><img src="https://github.com/benmills/propaganda/raw/master/images/footer.png"></p>
 
 <p>We can add a jQuery selector to match the second to last <code>h2</code> to add a little bit more content to the footer.</p>
 
-<div class="highlight"><pre>propaganda README --footer <span class="s2">&quot;h2:eq(2)&quot;</span>
-</pre></div>
-
+<pre><code class="bash">propaganda README --footer &quot;h2:eq(2)&quot;
+</code></pre>
 
 <p><img src="https://github.com/benmills/propaganda/raw/master/images/footer-complex.png"></p>
 

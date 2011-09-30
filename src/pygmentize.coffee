@@ -1,19 +1,24 @@
-{spawn} = require 'child_process'
+{spawn, exec} = require 'child_process'
 
-module.exports = (code, language_name, callback) ->
-  pygments = spawn 'pygmentize', ['-l', language_name, '-f', 'html']
-  output = ''
-  errors = ''
+module.exports = (cmd, code, language_name, callback) ->
+  exec cmd, (err, stdout) ->
+    if err
+      callback '', ''
+      return
 
-  pygments.stderr.addListener 'data', (error)  ->
-    errors += error.toString() if error
+    pygments = spawn cmd, ['-l', language_name, '-f', 'html']
+    output = ''
+    errors = ''
 
-  pygments.stdout.addListener 'data', (result) ->
-    output += result if result
+    pygments.stderr.addListener 'data', (error)  ->
+      errors += error.toString() if error
 
-  pygments.addListener 'exit', ->
-    callback errors, output
+    pygments.stdout.addListener 'data', (result) ->
+      output += result if result
 
-  pygments.stdin.write code
-  pygments.stdin.end()
+    pygments.addListener 'exit', ->
+      callback errors, output
+
+    pygments.stdin.write code
+    pygments.stdin.end()
 

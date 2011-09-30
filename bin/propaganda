@@ -22,16 +22,10 @@ var options = {
   template: tmpls + '/template.html'
 };
 
-if (argv.header) {
-  options['headerSel'] = (argv.header == true) ? "h1:first" : argv.header;
-}
-if (argv.footer) {
-  options.footerSel = (argv.footer == true) ? "h2:last" : argv.footer;
-}
-
-if (argv.header && argv.blk) {
-  options.blocks = argv.blk;
-}
+if (argv.header) options['headerSel'] = (argv.header == true) ? "h1:first" : argv.header;
+if (argv.footer) options.footerSel = (argv.footer == true) ? "h2:last" : argv.footer;
+if (argv.pygmentize) options.pygmentizeCmd = argv.pygmentize
+if (argv.header && argv.blk) options.blocks = argv.blk;
 
 if (path.existsSync(options.file)) {
   prop(options, function () {});
