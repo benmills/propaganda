@@ -28,9 +28,17 @@ if (argv.pygmentize) options.pygmentizeCmd = argv.pygmentize
 if (argv.header && argv.blk) options.blocks = argv.blk;
 
 if (path.existsSync(options.file)) {
-  prop(options, function (err, output) {
-    fs.writeFileSync('index.html', output);
-  });
+  if (argv.server) {
+    prop(options, function (err, output) {
+      require('http').createServer(function (req, res) {
+        res.end(output)
+      }).listen(argv.port || 3456);
+    });
+  } else {
+    prop(options, function (err, output) {
+      fs.writeFileSync('index.html', output);
+    });
+  }
 } else {
   console.log("File not found. " + usage);
 }
